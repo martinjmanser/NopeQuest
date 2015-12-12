@@ -5,6 +5,7 @@ axe, 127, 127, 127
 tree, 0, 91, 0
 
 # new fire is fire that has been freshly created or refueled. This is used to allow refueling a fire by adding more wood.
+fucknugget, 90, 90, 90
 fire, 255, 15, 0
 new fire, 255, 15, 0, fire
 burning branch, 255, 50, 0
