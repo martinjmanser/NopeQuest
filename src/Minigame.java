@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.FileReader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -131,8 +132,14 @@ public class Minigame extends Canvas implements KeyListener {
 	public static final int GRASS = 4;
 	/** Type value for the player's corpse. */
 	public static final int CORPSE = 5;
+	
+	/** Type value for a vehicle */
+	public static final int VEHICLE = 6;
+	
 	/** The first unused ID number. */
-	public static final int FIRST_SAFE_ID = 6;
+	public static final int FIRST_SAFE_ID = 7;
+	
+
 	
 	// Map data
 	/** Number of tiles in the map. */
@@ -228,6 +235,10 @@ public class Minigame extends Canvas implements KeyListener {
 		supertype[ANYTHING] = NONE;
 		supertype[GROUND] = NONE;
 		supertype[GRASS] = GROUND;
+		
+		// added supertype of VEHICLE as ANYTHING
+		supertype[VEHICLE] = ANYTHING;
+		
 		typeNames[NOTHING] = "nothing";
 		verboseTypeNames[NOTHING] = "nothing";
 		typeNames[PERSON] = "person";
@@ -240,15 +251,27 @@ public class Minigame extends Canvas implements KeyListener {
 		verboseTypeNames[ANYTHING] = "anything";
 		typeNames[GROUND] = "ground";
 		verboseTypeNames[GROUND] = "ground";
+		
+		// Added vehicle type
+		typeNames[VEHICLE] = "vehicle";
+		verboseTypeNames[VEHICLE] = "vehicle";
+		
 		nameToType.put(typeNames[NOTHING], NOTHING);
 		nameToType.put(typeNames[PERSON], PERSON);
 		nameToType.put(typeNames[GRASS], GRASS);
 		nameToType.put(typeNames[CORPSE], CORPSE);
 		nameToType.put(typeNames[ANYTHING], ANYTHING);
 		nameToType.put(typeNames[GROUND], GROUND);
+		
+		// put vehicle in hashmap
+		nameToType.put(typeNames[VEHICLE], VEHICLE);
+		
 		typeColors[PERSON] = new Color(191, 150, 130);
 		typeColors[GRASS] = new Color(31, 210, 31);
 		typeColors[CORPSE] = new Color(140, 0, 0);
+		
+		// make vehicles black
+		typeColors[VEHICLE] = new Color(0, 0, 0);
 	}
 	
 	// IO
@@ -412,9 +435,13 @@ public class Minigame extends Canvas implements KeyListener {
 				// Second, read in player state.
 				if (lineNumber == 2) {
 					String[] bits = s.split(",", 4);
+					System.out.println(Arrays.toString(bits));
 					playerX = Integer.parseInt(bits[0].trim());
 					playerY = Integer.parseInt(bits[1].trim());
+					System.out.println(bits[2].trim());
 					carriedItem = nameToType.get(bits[2].trim());
+					System.out.println(nameToType.entrySet());
+					// System.out.println(carriedItem);
 					if (bits.length > 3) {
 						carriedAge = Integer.parseInt(bits[3].trim());
 					}
@@ -588,36 +615,38 @@ public class Minigame extends Canvas implements KeyListener {
 		// If the player is dead, don't respond to keyboard.
 		if (map[PLAYER_LAYER][playerY][playerX] == CORPSE) { return; }
 		
+		int spaces = 1;
+		if (carriedItem == 55) { spaces = 2;}
 		switch (e.getKeyCode()) {
 			// Movement/executing drops.
 			case KeyEvent.VK_UP: {
 				if (wantToDrop) {
-					drop(0, -1);
+					drop(0, -1 * spaces);
 				} else {
-					movePlayer(0, -1);
+					movePlayer(0, -1 * spaces);
 				}
 				break;
 			}
 			case KeyEvent.VK_DOWN: {
 				if (wantToDrop) {
-					drop(0, 1);
+					drop(0, 1 * spaces);
 				} else {
-					movePlayer(0, 1);
+					movePlayer(0, 1 * spaces);
 				}
 				break;			}
 			case KeyEvent.VK_LEFT: {
 				if (wantToDrop) {
-					drop(-1, 0);
+					drop(-1 * spaces, 0);
 				} else {
-					movePlayer(-1, 0);
+					movePlayer(-1 * spaces, 0);
 				}
 				break;
 			}
 			case KeyEvent.VK_RIGHT: {
 				if (wantToDrop) {
-					drop(1, 0);
+					drop(1 * spaces, 0);
 				} else {
-					movePlayer(1, 0);
+					movePlayer(1 * spaces, 0);
 				}
 				break;
 			}
@@ -791,7 +820,6 @@ public class Minigame extends Canvas implements KeyListener {
 							newTargetType = useTargetResult[mySourceType][myTargetType];
 							myUseText = useText[mySourceType][myTargetType];
 							
-							System.out.print(newCarriedType); // trying to find value of carriedItem
 							
 							// Cache this discovery for faster access next time.
 							useCarriedResult[sourceType][targetType] = newCarriedType;

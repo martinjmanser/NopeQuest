@@ -63,7 +63,7 @@ pair of wheels, 156, 173, 68, pair of wheels
 engine, 156, 173, 68, engine
 
 #car
-car, 168, 44, 82, car
+car, 168, 44, 82, car, vehicle
 
 
 # The door consists of multiple items to work. The door itself spawns a door floor below it. The door floor will regenerate the door if it's missing. Moving into the door will cause it to turn into an open door, turn the door floor into an open door floor, and then disappear. The open door floor then turns into a door floor again after 12 turns, automatically closing the door again.
