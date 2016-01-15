@@ -40,7 +40,9 @@ change, cooked rabbit steak, rotted rabbit meat, 2000
 # Rubble eventually grows back into grass.
 change, rubble, grass, 10000
 # Make rabbits multiply.
-interact, rabbit, nothing, rabbit, rabbit, 4000
+interact, rabbit, rabbit, rabbit, preggers rabbit, 1
+interact, preggers rabbit, nothing, rabbit, rabbit, 200
+
 # Grass, having had fat/ash tipped out on it, should spawn fat/ash and revert.
 interact, grass with fat, nothing, grass, lump of fat, 1
 change, grass with fat, grass, 1
@@ -67,3 +69,7 @@ interact, burning branch, wooden floor, nothing, wooden floor, 10
 # Fire produces light.
 light, fire, 12
 light, burning branch, 7
+light, lit fireplace, 50
+
+change, lit fireplace, fireplace, 250
+

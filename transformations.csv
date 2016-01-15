@@ -23,7 +23,9 @@ pickup, bucket of ash
 pickup, knife
 pickup, rabbit
 use, knife, rabbit, knife, dead rabbit, kill the rabbit
+use, knife, preggers rabbit, knife, dead rabbit, kill the rabbit
 use, axe, rabbit, axe, dead rabbit, kill the rabbit
+use, axe, preggers rabbit, axe, dead rabbit, kill the rabbit
 pickup, dead rabbit
 use, knife, dead rabbit, knife, skinned rabbit, skin and clean the rabbit
 use, nothing, skinned rabbit, rabbit skin, dressed dead rabbit, take the skin off the rabbit
@@ -73,10 +75,44 @@ use, bucket of ash, grass, bucket, grass with ash, pour out the bucket
 use, bucket of fat, grass, bucket, grass with fat, pour out the bucket
 use, bucket of water, well, bucket, well, pour the water down the well
 
+
+# Cut grass
+use, knife, grass, knife, cut grass, cut grass
+# use, nothing, cut grass, cut grass, grass, pickup cut grass
+pickup, cut grass
+
+# get dirt
+use, axe, grass, axe, dirt, dirt
+pickup, dirt
+
+# make mud
+use, bucket of water, dirt, bucket, mud, pour out the bucket
+use, dirt, bucket of water, nothing, bucket of mud, pour out the bucket
+use, bucket of mud, grass, bucket, mud, pour out the bucket
+use, bucket, mud, bucket of mud, mud, pickup mud
+pickup, bucket of mud
+
+#make bricks
+use, cut grass, mud, nothing, wet bricks, mix grass and mud to make wet bricks
+use, mud, cut grass, nothing, wet bricks, mix grass and mud to make wet bricks
+pickup, wet bricks
+
+use, burning branch, wet bricks, burning branch, bricks, use burning branch to dry bricks
+pickup, bricks
+
+#make a fireplace
+use, bricks, wall, nothing, fireplace, make a fireplace
+
+use, pile of wood, fireplace, nothing, loaded fireplace, load a fireplace with wood
+use, burning branch, loaded fireplace, nothing, lit fireplace, light the fireplace
+
+
 # Make tied wood
 # use, carried item, target item, new carried item, new target item, description
-use, pile of wood, grass, tied wood, rubble, tied wood
+use, pile of wood, cut grass, tied wood, grass, tied wood
+use, cut grass, pile of wood, tied wood, grass, tied wood
 pickup, tied wood
+
 
 # Make chassis
 # use, carried item, target item, new carried item, new target item, description

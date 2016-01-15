@@ -13,12 +13,14 @@ pile of wood, 91, 64, 0
 well, 63, 63, 91
 bucket, 191, 191, 191
 bucket of water, 191, 191, 255
+bucket of mud, 143, 116, 63
 bucket of ash, 50, 50, 50
 bucket of fat, 230, 230, 180
 bucket of ash and fat, 160, 160, 145
 bucket of soap, 170, 170, 170
 pile of ash, 15, 15, 15
 rabbit, 200, 200, 191
+preggers rabbit, 200, 200, 191
 dead rabbit, 255, 200, 191
 skinned rabbit, 191, 0, 0
 rabbit skin, 210, 210, 200
@@ -33,6 +35,15 @@ knife, 150, 150, 150
 rabbit bones, 240, 240, 240
 bucket of soapy water, 200, 200, 155
 wall, 80, 55, 0
+
+#add fireplace
+cut grass, 215, 190, 135, cut grass, ground
+wet bricks, 175, 25, 50
+bricks, 150, 25, 15
+fireplace, 150, 25, 15
+loaded fireplace, 150, 50, 15
+lit fireplace, 200, 50, 15
+
 torn down wall, 80, 55, 0
 wooden floor, 100, 75, 40, wooden floor, ground
 sleeping treant, 0, 91, 0, tree
@@ -42,6 +53,12 @@ rotted rabbit meat, 160, 50, 10
 smoked rabbit meat, 80, 0, 0
 # Rubble is a type of ground.
 rubble, 85, 80, 75, rubble, ground
+
+# Dirt is a type of ground.
+dirt, 120, 72, 0, dirt, ground
+
+mud, 143, 116, 63, mud
+
 # These are just transitional items that spawn ash/fat and never appear on the map.
 grass with ash, 0, 0, 0, grass with ash, ground
 grass with fat, 0, 0, 0, grass with fat, ground
